@@ -5,8 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts",
-    "start:prod": "node ./build/index.js"
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "18.6.0"
   },
   "author": "Mohammad",
   "license": "MIT",
