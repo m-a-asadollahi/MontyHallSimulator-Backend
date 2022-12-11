@@ -1,12 +1,12 @@
 import { RequestHandler } from "express";
-import MontyHallSimulationDto from "../dtos/montyHallSimulation";
+// import MontyHallSimulationDto from "../dtos/montyHallSimulation";
 import MontyHall from "../models/montyHall";
-import { IGameInfo } from "../models/types";
+import { ISimulationInfo } from "../models/types";
 
 export const simulateGame: RequestHandler = (req, res, next) => {
   const numberOfSimulations = parseInt(req.params.count);
   const changeTheChoice = req.params.changeChoise === "true";
-  const simulations: IGameInfo[] = [];
+  const simulations: ISimulationInfo[] = [];
 
   for (let i = 0; i < numberOfSimulations; i++) {
     const montyHallGame = new MontyHall(changeTheChoice, 3);

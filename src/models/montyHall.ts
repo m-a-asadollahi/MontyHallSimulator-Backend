@@ -1,19 +1,25 @@
-import { IGameInfo, TDoorValue, TGameResult } from "./types";
+import { ISimulationInfo, TDoorValue, TSimulationResult } from "./types";
 
+//* simulator class
+/**
+ this class simulates the Monty hall game. 
+ There are game doors and indexes for the selected door, the revealed door, and the second selected door. 
+ there is a random process to create all indexes.
+ */
 export default class MontyHall {
   private carIndex: number;
   private gameDoors: TDoorValue[];
-  private gameResult: TGameResult;
+  private simulationResult: TSimulationResult;
 
   constructor(public changeTheChoice: boolean, public numberOfDoors: number) {
     this.gameDoors = new Array<TDoorValue>(numberOfDoors);
     this.gameDoors.fill("Goat");
-    this.gameResult = "Failure";
+    this.simulationResult = "Failure";
     this.carIndex = Math.floor(Math.random() * numberOfDoors);
     this.gameDoors[this.carIndex] = "Car";
   }
-
-  public playMontyHall = (): IGameInfo => {
+  //* This function runs for each simulation and returns the indexes and the result of the simulation.
+  public playMontyHall = (): ISimulationInfo => {
     const selectedDoorIndex = Math.floor(Math.random() * this.numberOfDoors);
     let secondSelectedDoorIndex: null | number = null;
 
@@ -26,17 +32,17 @@ export default class MontyHall {
         (door, index) =>
           index !== revealedDoorIndex && index !== selectedDoorIndex
       );
-      this.gameResult =
+      this.simulationResult =
         secondSelectedDoorIndex === this.carIndex ? "Win" : "Failure";
     } else {
-      // secondSelectedDoorIndex = null;
-      this.gameResult = selectedDoorIndex === this.carIndex ? "Win" : "Failure";
+      this.simulationResult =
+        selectedDoorIndex === this.carIndex ? "Win" : "Failure";
     }
 
-    const resultGame: IGameInfo = {
+    const resultGame: ISimulationInfo = {
       carIndex: this.carIndex,
       doors: this.gameDoors,
-      gameResult: this.gameResult,
+      simulationResult: this.simulationResult,
       revealedDoor: revealedDoorIndex,
       selectedDoor: selectedDoorIndex,
       secondSelectedDoor: this.changeTheChoice

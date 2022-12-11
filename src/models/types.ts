@@ -1,12 +1,15 @@
+//* The type of each door.
 export type TDoorValue = "Goat" | "Car";
 
-export type TGameResult = "Win" | "Failure";
+//* The type of simulation result.
+export type TSimulationResult = "Win" | "Failure";
 
-export interface IGameInfo {
+//* The simulation result interface.
+export interface ISimulationInfo {
   doors: TDoorValue[];
   carIndex: number;
   selectedDoor: number;
   revealedDoor: number;
-  gameResult: TGameResult;
+  simulationResult: TSimulationResult;
   secondSelectedDoor?: number | null;
 }
