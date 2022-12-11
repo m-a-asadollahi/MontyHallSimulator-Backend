@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.simulateGame = void 0;
+// import MontyHallSimulationDto from "../dtos/montyHallSimulation";
 const montyHall_1 = __importDefault(require("../models/montyHall"));
 const simulateGame = (req, res, next) => {
     const numberOfSimulations = parseInt(req.params.count);
