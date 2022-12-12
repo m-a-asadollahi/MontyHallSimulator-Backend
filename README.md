@@ -9,4 +9,5 @@ https://montyhall-simulator.surge.sh/
 ## Technologies
 
 - Node.js
+- TypeScript
 - Express
